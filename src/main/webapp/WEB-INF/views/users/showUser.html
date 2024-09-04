@@ -13,11 +13,12 @@
         <p th:text="${user.getAge()}">age</p>
         <p th:text="${user.getEmail()}">email</p>
 
-        <a th:href="@{/users/{id}/edit(id=${user.getId()})}">Редактировать</a>
+        <a th:href="@{/users/edit(id=${user.getId()})}">Редактировать</a>
     </div>
 
-    <form th:method="DELETE" th:action="@{/users/{id}(id=${user.getId()})}">
-        <input type="submit" value="Удалить человека"/>
+    <form th:method="POST" th:action="@{/users/delete}">
+        <input type="hidden" th:name="id" th:value="${user.id}"/>
+        <button type="submit">Удалить человека</button>
     </form>
 
 </body>
